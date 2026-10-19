@@ -117,19 +117,35 @@ function filtered() {
   }
 
 
-  if (f.stayDate) {
-    if (!f.checkIn || !f.checkOut) return [];
-    if (f.checkIn > f.checkOut) return [];
+    if (f.stayDate) {
+      if (f.checkIn && f.checkOut && f.checkIn > f.checkOut) {
+          return [];
+      }
 
-    a = a.filter(r => {
-      const ci = isoDate(r["Check In Date"]);
-      const co = isoDate(r["Check Out Date"]);
+      a = a.filter(r => {
+          const ci = isoDate(r["Check In Date"]);
+          const co = isoDate(r["Check Out Date"]);
 
-      if (!ci || !co) return false;
+          if (!ci) return false;
 
-      // Booking must fit completely inside the selected range.
-      return ci >= f.checkIn && co <= f.checkOut;
-    });
+          // Only check-in date selected: match that exact day.
+          if (f.checkIn && !f.checkOut) {
+              return ci === f.checkIn;
+          }
+
+          // Only check-out date selected: match that exact day.
+          if (!f.checkIn && f.checkOut) {
+              return co === f.checkOut;
+          }
+
+          // Both dates selected: booking must fit within the range.
+          if (f.checkIn && f.checkOut) {
+              return co && ci >= f.checkIn && co <= f.checkOut;
+          }
+
+          // Neither date selected: don't filter by stay date.
+          return true;
+      });
   }
 
   return a;
