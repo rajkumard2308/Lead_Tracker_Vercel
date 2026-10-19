@@ -7,11 +7,10 @@
 <title>2026 Lead Conversion Board</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f8fafc;color:#172033;font-family:Arial,Helvetica,sans-serif}.main{max-width:1500px;margin:auto;padding:2rem 24px 3rem}.main-title{font-size:32px;font-weight:800;color:#172033;letter-spacing:-.5px;margin-bottom:3px}.sub-title{color:#64748b;font-size:14px;margin-bottom:22px}.top-header{display:grid;grid-template-columns:minmax(0,5.8fr) 1.45fr 1.45fr;gap:16px;align-items:start}.header-action button{width:100%;height:42px;padding:0 8px;border-radius:8px;font-size:13px;font-weight:700}.btn{border:1px solid #d1d5db;background:#fff;color:#374151;border-radius:8px;padding:9px 13px;cursor:pointer;font-weight:600;font-size:12px}.btn:hover{background:#f8fafc}.btn-primary{background:#4f46e5;color:#fff;border-color:#4f46e5}.btn-primary:hover{background:#4338ca}.btn-danger{background:#dc2626;color:#fff;border-color:#dc2626}.btn-danger:hover{background:#b91c1c}.btn-full{width:100%}.toolbar{display:flex;justify-content:flex-end;margin:12px 0}.filters{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;box-shadow:0 2px 8px rgba(15,23,42,.04);margin:8px 0 18px}.filter-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:12px}.filter-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:12px}.filter-group{min-width:0}.filter-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}.field label{display:block;font-size:11px;font-weight:800;color:#64748b;margin:0 0 5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:9px 10px;background:#fff;color:#334155;font-size:13px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}.toggle-line{display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;font-weight:650;margin-top:10px}.toggle-line input{width:16px;height:16px}.dashboard{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:10px 0}.metric{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:15px 16px;box-shadow:0 2px 8px rgba(15,23,42,.03);min-height:82px}.metric-label{font-size:10px;font-weight:800;color:#64748b;letter-spacing:.5px}.metric-value{font-size:24px;font-weight:800;color:#172033;margin-top:7px}.divider{height:1px;background:#e5e7eb;margin:18px 0}.tabs{display:flex;gap:6px;border-bottom:1px solid #e2e8f0;margin-top:18px}.tab{border:0;background:transparent;padding:12px 15px;color:#64748b;font-weight:700;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:#4338ca;border-bottom-color:#6366f1}.panel{display:none}.panel.active{display:block}.section-heading{font-size:20px;font-weight:800;color:#172033;margin:20px 0 12px}.status-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.status-btn{min-height:40px;border:1px solid #dbe1ea;background:#fff;border-radius:8px;color:#475569;font-size:11px;font-weight:700;cursor:pointer;padding:7px}.status-btn.active{background:#4f46e5;color:#fff;border-color:#4f46e5}.selected-status-header{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;margin:18px 0 12px;box-shadow:0 2px 8px rgba(15,23,42,.04)}.selected-status-title{font-size:20px;font-weight:750;color:#172033}.selected-status-icon{font-size:20px;margin-right:8px}.selected-count{background:#eef2ff;color:#4338ca;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700}.lead-table-header,.lead-row{display:grid;grid-template-columns:1.25fr 1.35fr 1.4fr 1.35fr 1.55fr 2.1fr;gap:12px}.lead-table-header{padding:10px 14px;color:#64748b;font-size:10px;font-weight:800;letter-spacing:.6px}.lead-row{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 2px 8px rgba(15,23,42,.03);padding:13px 14px;margin-bottom:8px;align-items:start}.lead-name{font-size:14px;font-weight:750;color:#172033;margin-bottom:5px}.lead-date,.lead-email{color:#64748b;font-size:11px}.lead-email{margin-top:6px;word-break:break-word}.field-label{font-size:9px;font-weight:800;color:#94a3b8;letter-spacing:.5px;margin-bottom:3px}.field-value{font-size:12px;color:#334155;margin-bottom:3px}.agent-name{font-size:12px;font-weight:650;color:#334155;margin-bottom:6px}.source-name{font-size:11px;color:#64748b}.booking-date{display:inline-block;margin-top:7px;padding:4px 7px;background:#ecfdf5;color:#047857;border-radius:6px;font-size:10px;font-weight:650}.followup-badge{display:inline-block;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;margin-bottom:7px}.remarks{font-size:11px;color:#64748b}.phone-line{display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;white-space:nowrap}.copy-btn{border:1px solid #d1d5db;background:white;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;color:#374151}.actions{display:flex;flex-direction:column;gap:7px}.actions select{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:#fff;font-size:12px}.follow-box{display:grid;grid-template-columns:1.2fr 1fr;gap:10px;margin-top:10px}.follow-box .field{min-width:0}.follow-box .field label{display:block;font-size:10px;font-weight:800;color:#64748b;margin-bottom:5px;line-height:1.2}.follow-box input,.follow-box select{width:100%;height:38px;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#334155;font-size:11px}.status-update-btn{width:100%;margin-top:9px}.empty-board{background:#fff;border:1px dashed #cbd5e1;border-radius:14px;padding:50px 20px;text-align:center;margin-top:10px}.empty-icon{font-size:36px;margin-bottom:10px}.empty-title{font-size:16px;font-weight:700;color:#334155}.empty-text{color:#94a3b8;font-size:13px;margin-top:5px}.analytics-title{font-size:28px;font-weight:800;color:#172033;margin-top:15px}.analytics-subtitle{color:#64748b;font-size:13px;margin-bottom:20px}.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.insight-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:15px;text-align:center}.insight-label{font-size:11px;color:#64748b;font-weight:650}.insight-number{font-size:28px;font-weight:800;color:#172033;margin-top:4px}.analytics-table-wrapper{width:100%;overflow-x:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;margin-top:10px}.analytics-table{width:100%;border-collapse:collapse;font-size:13px}.analytics-table th{background:#f8fafc;color:#64748b;text-align:left;padding:13px 15px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}.analytics-table td{padding:14px 15px;border-top:1px solid #f1f5f9;color:#334155}.progress-container{width:120px;height:7px;background:#e2e8f0;border-radius:999px;display:inline-block;vertical-align:middle;margin-right:8px}.progress-bar{height:100%;background:#6366f1;border-radius:999px}.chart-grid{display:grid;grid-template-columns:1fr;gap:20px}.chart-card{background:#0e1117;border-radius:12px;overflow:hidden;border:1px solid #29313d;min-height:480px}.chart{width:100%;height:520px}.modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}.modal-backdrop.open{display:flex}.modal{width:min(850px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:14px;box-shadow:0 20px 70px rgba(15,23,42,.28);padding:20px}.modal.small{width:min(500px,100%)}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.modal-title{font-size:20px;font-weight:800;color:#172033}.close{border:0;background:#f1f5f9;border-radius:8px;width:34px;height:34px;cursor:pointer}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid.three{grid-template-columns:repeat(3,1fr)}.full{grid-column:1/-1}.modal-actions{display:flex;gap:10px;margin-top:18px}.modal-actions .btn{flex:1}.alert{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:12px}.alert.error{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}.alert.success{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}.alert.warning{background:#fffbeb;color:#92400e;border:1px solid #fde68a}.bulk-summary{font-size:13px;color:#475569;margin:12px 0}.table-scroll{overflow:auto}.preview-table{border-collapse:collapse;width:100%;font-size:11px}.preview-table th,.preview-table td{padding:7px 8px;border:1px solid #e2e8f0;text-align:left;white-space:nowrap}.preview-table th{background:#f8fafc;color:#64748b}.footer{color:#94a3b8;font-size:11px;margin-top:22px}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #cbd5e1;border-top-color:#4f46e5;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}@keyframes spin{to{transform:rotate(360deg)}}
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script><style>
+*{box-sizing:border-box}body{margin:0;background:#f8fafc;color:#172033;font-family:Arial,Helvetica,sans-serif}.main{max-width:1500px;margin:auto;padding:2rem 24px 3rem}.main-title{font-size:32px;font-weight:800;color:#172033;letter-spacing:-.5px;margin-bottom:3px}.sub-title{color:#64748b;font-size:14px;margin-bottom:22px}.top-header{display:grid;grid-template-columns:minmax(0,5.8fr) 1.45fr 1.45fr;gap:16px;align-items:start}.header-action button{width:100%;height:42px;padding:0 8px;border-radius:8px;font-size:13px;font-weight:700}.btn{border:1px solid #d1d5db;background:#fff;color:#374151;border-radius:8px;padding:9px 13px;cursor:pointer;font-weight:600;font-size:12px}.btn:hover{background:#f8fafc}.btn-primary{background:#4f46e5;color:#fff;border-color:#4f46e5}.btn-primary:hover{background:#4338ca}.btn-danger{background:#dc2626;color:#fff;border-color:#dc2626}.btn-danger:hover{background:#b91c1c}.btn-full{width:100%}.toolbar{display:flex;justify-content:flex-end;margin:12px 0}.filters{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;box-shadow:0 2px 8px rgba(15,23,42,.04);margin:8px 0 18px}.filter-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:12px}.filter-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:12px}.filter-group{min-width:0}.filter-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px;width:100%;align-items:start}.filter-fields>.field{min-width:0;width:100%}.filter-fields>.field input,.filter-fields>.field select,.filter-fields>.field textarea{width:100%;min-width:0;box-sizing:border-box}.filter-fields>.field:has(select[id$="Quick"]){grid-column:1/-1}.field label{display:block;font-size:11px;font-weight:800;color:#64748b;margin:0 0 5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:9px 10px;background:#fff;color:#334155;font-size:13px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}.toggle-line{display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;font-weight:650;margin-top:10px}.toggle-line input{width:16px;height:16px}.dashboard{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:10px 0}.metric{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:15px 16px;box-shadow:0 2px 8px rgba(15,23,42,.03);min-height:82px}.metric-label{font-size:10px;font-weight:800;color:#64748b;letter-spacing:.5px}.metric-value{font-size:24px;font-weight:800;color:#172033;margin-top:7px}.divider{height:1px;background:#e5e7eb;margin:18px 0}.tabs{display:flex;gap:6px;border-bottom:1px solid #e2e8f0;margin-top:18px}.tab{border:0;background:transparent;padding:12px 15px;color:#64748b;font-weight:700;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:#4338ca;border-bottom-color:#6366f1}.panel{display:none}.panel.active{display:block}.section-heading{font-size:20px;font-weight:800;color:#172033;margin:20px 0 12px}.status-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.status-btn{min-height:40px;border:1px solid #dbe1ea;background:#fff;border-radius:8px;color:#475569;font-size:11px;font-weight:700;cursor:pointer;padding:7px}.status-btn.active{background:#4f46e5;color:#fff;border-color:#4f46e5}.selected-status-header{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;margin:18px 0 12px;box-shadow:0 2px 8px rgba(15,23,42,.04)}.selected-status-title{font-size:20px;font-weight:750;color:#172033}.selected-status-icon{font-size:20px;margin-right:8px}.selected-count{background:#eef2ff;color:#4338ca;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700}.lead-table-header,.lead-row{display:grid;grid-template-columns:1.25fr 1.35fr 1.4fr 1.35fr 1.55fr 2.1fr;gap:12px}.lead-table-header{padding:10px 14px;color:#64748b;font-size:10px;font-weight:800;letter-spacing:.6px}.lead-row{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 2px 8px rgba(15,23,42,.03);padding:13px 14px;margin-bottom:8px;align-items:start}.lead-name{font-size:14px;font-weight:750;color:#172033;margin-bottom:5px}.lead-date,.lead-email{color:#64748b;font-size:11px}.lead-email{margin-top:6px;word-break:break-word}.field-label{font-size:9px;font-weight:800;color:#94a3b8;letter-spacing:.5px;margin-bottom:3px}.field-value{font-size:12px;color:#334155;margin-bottom:3px}.agent-name{font-size:12px;font-weight:650;color:#334155;margin-bottom:6px}.source-name{font-size:11px;color:#64748b}.booking-date{display:inline-block;margin-top:7px;padding:4px 7px;background:#ecfdf5;color:#047857;border-radius:6px;font-size:10px;font-weight:650}.followup-badge{display:inline-block;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;margin-bottom:7px}.remarks{font-size:11px;color:#64748b}.phone-line{display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;white-space:nowrap}.copy-btn{border:1px solid #d1d5db;background:white;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;color:#374151}.actions{display:flex;flex-direction:column;gap:7px}.actions select{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:#fff;font-size:12px}.follow-box{display:grid;grid-template-columns:1.2fr 1fr;gap:10px;margin-top:10px}.follow-box .field{min-width:0}.follow-box .field label{display:block;font-size:10px;font-weight:800;color:#64748b;margin-bottom:5px;line-height:1.2}.follow-box input,.follow-box select{width:100%;height:38px;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#334155;font-size:11px}.status-update-btn{width:100%;margin-top:9px}.empty-board{background:#fff;border:1px dashed #cbd5e1;border-radius:14px;padding:50px 20px;text-align:center;margin-top:10px}.empty-icon{font-size:36px;margin-bottom:10px}.empty-title{font-size:16px;font-weight:700;color:#334155}.empty-text{color:#94a3b8;font-size:13px;margin-top:5px}.analytics-title{font-size:28px;font-weight:800;color:#172033;margin-top:15px}.analytics-subtitle{color:#64748b;font-size:13px;margin-bottom:20px}.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.insight-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:15px;text-align:center}.insight-label{font-size:11px;color:#64748b;font-weight:650}.insight-number{font-size:28px;font-weight:800;color:#172033;margin-top:4px}.analytics-table-wrapper{width:100%;overflow-x:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;margin-top:10px}.analytics-table{width:100%;border-collapse:collapse;font-size:13px}.analytics-table th{background:#f8fafc;color:#64748b;text-align:left;padding:13px 15px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}.analytics-table td{padding:14px 15px;border-top:1px solid #f1f5f9;color:#334155}.progress-container{width:120px;height:7px;background:#e2e8f0;border-radius:999px;display:inline-block;vertical-align:middle;margin-right:8px}.progress-bar{height:100%;background:#6366f1;border-radius:999px}.chart-grid{display:grid;grid-template-columns:1fr;gap:20px}.chart-card{background:#0e1117;border-radius:12px;overflow:hidden;border:1px solid #29313d;min-height:480px}.chart{width:100%;height:520px}.modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}.modal-backdrop.open{display:flex}.modal{width:min(850px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:14px;box-shadow:0 20px 70px rgba(15,23,42,.28);padding:20px}.modal.small{width:min(500px,100%)}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.modal-title{font-size:20px;font-weight:800;color:#172033}.close{border:0;background:#f1f5f9;border-radius:8px;width:34px;height:34px;cursor:pointer}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid.three{grid-template-columns:repeat(3,1fr)}.full{grid-column:1/-1}.modal-actions{display:flex;gap:10px;margin-top:18px}.modal-actions .btn{flex:1}.alert{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:12px}.alert.error{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}.alert.success{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}.alert.warning{background:#fffbeb;color:#92400e;border:1px solid #fde68a}.bulk-summary{font-size:13px;color:#475569;margin:12px 0}.table-scroll{overflow:auto}.preview-table{border-collapse:collapse;width:100%;font-size:11px}.preview-table th,.preview-table td{padding:7px 8px;border:1px solid #e2e8f0;text-align:left;white-space:nowrap}.preview-table th{background:#f8fafc;color:#64748b}.footer{color:#94a3b8;font-size:11px;margin-top:22px}.spinner{display:inline-block;width:16px;height:16px;border:2px solid #cbd5e1;border-top-color:#4f46e5;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1100px){.dashboard{grid-template-columns:repeat(3,1fr)}.status-nav{grid-template-columns:repeat(4,1fr)}.lead-table-header,.lead-row{grid-template-columns:1.3fr 1.3fr 1.4fr 1.3fr 1.5fr 1.8fr}.filter-grid{grid-template-columns:1fr 1fr}.form-grid.three{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.main{padding:1.2rem 12px 2rem}.top-header{grid-template-columns:1fr 1fr}.top-header>div:first-child{grid-column:1/-1}.main-title{font-size:26px}.filter-grid,.filter-row,.form-grid,.form-grid.three{grid-template-columns:1fr}.filter-fields{grid-template-columns:1fr}.dashboard{grid-template-columns:repeat(2,1fr)}.status-nav{grid-template-columns:repeat(2,1fr)}.lead-table-header{display:none}.lead-row{display:block}.lead-row>div{margin-bottom:12px}.actions{display:grid;grid-template-columns:1fr 1fr}.actions select,.follow-box{grid-column:1/-1}.insight-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.main{padding:1.2rem 12px 2rem}.top-header{grid-template-columns:1fr 1fr}.top-header>div:first-child{grid-column:1/-1}.main-title{font-size:26px}.filter-grid,.filter-row,.form-grid,.form-grid.three{grid-template-columns:1fr}.filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-fields>.field:has(select[id$="Quick"]){grid-column:1/-1}.dashboard{grid-template-columns:repeat(2,1fr)}.status-nav{grid-template-columns:repeat(2,1fr)}.lead-table-header{display:none}.lead-row{display:block}.lead-row>div{margin-bottom:12px}.actions{display:grid;grid-template-columns:1fr 1fr}.actions select,.follow-box{grid-column:1/-1}.insight-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.dashboard{grid-template-columns:1fr}.top-header{grid-template-columns:1fr}.top-header>div:first-child{grid-column:auto}.status-nav{grid-template-columns:1fr}.modal{padding:14px}.modal-actions{flex-direction:column}}
 </style>
 </head>
@@ -47,7 +46,7 @@ const BOARD_STATUS_ORDER=["Quotation Given","Follow up","Converted","No Availabi
 const STATUS_ICONS={"Follow up":"🟡","Quotation Given":"🔵","Converted":"🟢","No Availability":"⚪","Out of Budget":"🔴","Ghosted":"🟣","Not Interested":"⚫"};
 const STATUS_COLORS={"Follow up":"#F59E0B","Quotation Given":"#3B82F6","Converted":"#22C55E","No Availability":"#06B6D4","Out of Budget":"#EF4444","Ghosted":"#A855F7","Not Interested":"#64748B"};
 const CHART_BG="#0E1117",TEXT_COLOR="#F8FAFC",MUTED_TEXT="#CBD5E1",GRID_COLOR="#29313D";
-const state={leads:[],loading:true,error:"",tab:"board",selectedStatus:"Quotation Given",filters:{search:"",status:"All Statuses",agent:"All Agents",source:"All Sources",leadDate:false,dateFrom:"",dateTo:"",followUp:false,followUpFrom:"",followUpCount:"All Follow-up Counts",stayDate:false,checkIn:"",checkOut:""},modal:null,editing:null,deleting:null,bulk:null};
+const state={leads:[],loading:true,error:"",tab:"board",selectedStatus:"Quotation Given",filters:{search:"",status:"All Statuses",agent:"All Agents",source:"All Sources",leadDate:false,dateFrom:"",dateTo:"",followUp:false,followUpFrom:"",followUpCount:"All Follow-up Counts",leadDateQuick: "custom",followQuick: "custom",stayQuick: "custom",stayDate:false,checkIn:"",checkOut:""},modal:null,editing:null,deleting:null,bulk:null};
 
 function esc(v){return String(v??"").replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 function parseDate(v){if(!v)return null; const s=String(v).trim(); if(!s)return null; let m=s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})$/); if(m){let d=+m[1],mo=+m[2],y=+m[3];if(y<100)y+=2000; if(d>0&&mo>0)return new Date(y,mo-1,d)} m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);if(m)return new Date(+m[1],+m[2]-1,+m[3]); return null;}
@@ -64,10 +63,201 @@ function escapeAttr(v){return esc(v).replace(/`/g,'&#96;')}
 
 async function api(path,options={}){const r=await fetch(path,{headers:{'Content-Type':'application/json',...(options.headers||{})},...options});let data={};try{data=await r.json()}catch{}if(!r.ok)throw new Error(data.error||`Request failed (${r.status})`);return data;}
 async function load(){state.loading=true;state.error="";render();try{const d=await api('/api/leads');state.leads=d.leads||[];}catch(e){state.error=e.message}finally{state.loading=false;render();}}
-function filtered(){let a=[...state.leads],f=state.filters;const clean=x=>val(x).toLowerCase();if(clean(f.search)){const q=clean(f.search);a=a.filter(r=>[r.Name,r.Number,r.Email].some(x=>clean(x).includes(q)))}if(f.status!=="All Statuses")a=a.filter(r=>val(r.Status)===f.status);if(f.agent!=="All Agents")a=a.filter(r=>val(r.Agent)===f.agent);if(f.source!=="All Sources")a=a.filter(r=>val(r.Source)===f.source);if(f.leadDate){if(f.dateFrom&&f.dateTo&&f.dateFrom>f.dateTo)return [];if(f.dateFrom)a=a.filter(r=>{const d=isoDate(r.Date);return d&&d>=f.dateFrom});if(f.dateTo)a=a.filter(r=>{const d=isoDate(r.Date);return d&&d<=f.dateTo})}if(f.followUp){if(f.followUpFrom)a=a.filter(r=>isoDate(r['Last Follow Up'])===f.followUpFrom);if(f.followUpCount!=="All Follow-up Counts")a=a.filter(r=>val(r['Follow Up Count'])===f.followUpCount)}if(f.stayDate){if(!f.checkIn)return [];a=a.filter(r=>isoDate(r['Check In Date'])===f.checkIn);if(f.checkOut)a=a.filter(r=>isoDate(r['Check Out Date'])===f.checkOut)}return a;}
+
+
+
+function filtered() {
+  let a = [...state.leads];
+  const f = state.filters;
+  const clean = x => val(x).toLowerCase();
+
+  if (clean(f.search)) {
+    const q = clean(f.search);
+    a = a.filter(r =>
+      [r.Name, r.Number, r.Email].some(x => clean(x).includes(q))
+    );
+  }
+
+  if (f.status !== "All Statuses")
+    a = a.filter(r => val(r.Status) === f.status);
+
+  if (f.agent !== "All Agents")
+    a = a.filter(r => val(r.Agent) === f.agent);
+
+  if (f.source !== "All Sources")
+    a = a.filter(r => val(r.Source) === f.source);
+
+  if (f.leadDate) {
+    if (f.dateFrom && f.dateTo && f.dateFrom > f.dateTo) return [];
+
+    a = a.filter(r => {
+      const d = isoDate(r.Date);
+      return d &&
+        (!f.dateFrom || d >= f.dateFrom) &&
+        (!f.dateTo || d <= f.dateTo);
+    });
+  }
+
+  if (f.followUp) {
+    if (f.followUpFrom) {
+      const today = todayIso();
+      if (f.followUpFrom > today) return [];
+
+      a = a.filter(r => {
+        const d = isoDate(r["Last Follow Up"]);
+        return d && d >= f.followUpFrom && d <= today;
+      });
+    }
+
+    if (f.followUpCount !== "All Follow-up Counts") {
+      a = a.filter(r =>
+        val(r["Follow Up Count"]) === f.followUpCount
+      );
+    }
+  }
+
+
+  if (f.stayDate) {
+    if (!f.checkIn || !f.checkOut) return [];
+    if (f.checkIn > f.checkOut) return [];
+
+    a = a.filter(r => {
+      const ci = isoDate(r["Check In Date"]);
+      const co = isoDate(r["Check Out Date"]);
+
+      if (!ci || !co) return false;
+
+      // Booking must fit completely inside the selected range.
+      return ci >= f.checkIn && co <= f.checkOut;
+    });
+  }
+
+  return a;
+}
+
 function dashboardHTML(df){const c=Object.fromEntries(STATUSES.map(s=>[s,df.filter(r=>val(r.Status)===s).length]));const total=df.length,converted=c.Converted||0;const rev=df.filter(r=>val(r.Status)==='Converted').reduce((s,r)=>s+amount(r['Total Amount']),0);return `<div class="dashboard"><div class="metric"><div class="metric-label">TOTAL LEADS</div><div class="metric-value">${total}</div></div><div class="metric"><div class="metric-label">QUOTATION GIVEN</div><div class="metric-value">${c['Quotation Given']}</div></div><div class="metric"><div class="metric-label">FOLLOW UP</div><div class="metric-value">${c['Follow up']}</div></div><div class="metric"><div class="metric-label">CONVERTED</div><div class="metric-value">${converted}</div></div><div class="metric"><div class="metric-label">NO AVAILABILITY</div><div class="metric-value">${c['No Availability']}</div></div></div><div class="dashboard"><div class="metric"><div class="metric-label">OUT OF BUDGET</div><div class="metric-value">${c['Out of Budget']}</div></div><div class="metric"><div class="metric-label">GHOSTED</div><div class="metric-value">${c.Ghosted}</div></div><div class="metric"><div class="metric-label">NOT INTERESTED</div><div class="metric-value">${c['Not Interested']}</div></div><div class="metric"><div class="metric-label">TOTAL REVENUE</div><div class="metric-value">${revenue(rev)}</div></div><div class="metric"><div class="metric-label">CONVERSION</div><div class="metric-value">${total?(converted/total*100).toFixed(1):'0.0'}%</div></div></div>`}
 function selectOptions(arr,selected,all){return (all?[all]:[]).concat(arr).map(x=>`<option ${x===selected?'selected':''}>${esc(x)}</option>`).join('')}
-function filtersHTML(){const f=state.filters;return `<div class="filters"><div class="filter-grid"><div class="field"><label>SEARCH</label><input id="fSearch" value="${escapeAttr(f.search)}" placeholder="Search name, phone, email..."></div><div class="field"><label>STATUS</label><select id="fStatus">${selectOptions(STATUSES,f.status,'All Statuses')}</select></div><div class="field"><label>AGENT</label><select id="fAgent">${selectOptions(AGENTS,f.agent,'All Agents')}</select></div><div class="field"><label>SOURCE</label><select id="fSource">${selectOptions(SOURCES,f.source,'All Sources')}</select></div></div><div class="filter-row"><div class="filter-group"><label class="toggle-line"><input id="leadDateToggle" type="checkbox" ${f.leadDate?'checked':''}> Filter by Lead Date</label><div class="filter-fields"><div class="field"><label>FROM DATE</label><input id="dateFrom" type="date" value="${f.dateFrom}"></div><div class="field"><label>TO DATE</label><input id="dateTo" type="date" value="${f.dateTo}"></div></div></div><div class="filter-group"><label class="toggle-line"><input id="followToggle" type="checkbox" ${f.followUp?'checked':''}> Filter by Last Follow-up</label><div class="filter-fields"><div class="field"><label>LAST FOLLOW-UP FROM DATE</label><input id="followFrom" type="date" value="${f.followUpFrom}"></div><div class="field"><label>FOLLOW-UP COUNT</label><select id="followCount"><option>All Follow-up Counts</option>${FOLLOW_UP_OPTIONS.map(x=>`<option ${x===f.followUpCount?'selected':''}>${x}</option>`).join('')}</select></div></div></div><div class="filter-group"><label class="toggle-line"><input id="stayToggle" type="checkbox" ${f.stayDate?'checked':''}> Filter by Stay Date</label><div class="filter-fields"><div class="field"><label>CHECK-IN DATE</label><input id="checkInFilter" type="date" value="${f.checkIn}"></div><div class="field"><label>CHECK-OUT DATE (OPTIONAL)</label><input id="checkOutFilter" type="date" value="${f.checkOut}"></div></div></div></div></div>`}
+
+
+function filtersHTML() {
+    const f = state.filters;
+
+    const pastOptions = `
+        <option value="custom">Custom range</option>
+        <option value="7">Last 7 days</option>
+        <option value="30">Last 30 days</option>
+        <option value="3m">Last 3 months</option>
+    `;
+
+    const futureOptions = `
+        <option value="custom">Custom range</option>
+        <option value="7">Next 7 days</option>
+        <option value="30">Next 30 days</option>
+        <option value="3m">Next 3 months</option>
+    `;
+
+    function quickOptions(options, selectedValue) {
+        const selected = selectedValue || "custom";
+        return options.replace(
+            `<option value="${selected}">`,
+            `<option value="${selected}" selected>`
+        );
+    }
+
+    return `
+    <div class="filters">
+        <div class="filter-grid">
+            <div class="field">
+                <label>SEARCH</label>
+                <input id="fSearch" value="${escapeAttr(f.search)}"
+                       placeholder="Search name, phone, email...">
+            </div>
+            <div class="field">
+                <label>STATUS</label>
+                <select id="fStatus">${selectOptions(STATUSES, f.status, "All Statuses")}</select>
+            </div>
+            <div class="field">
+                <label>AGENT</label>
+                <select id="fAgent">${selectOptions(AGENTS, f.agent, "All Agents")}</select>
+            </div>
+            <div class="field">
+                <label>SOURCE</label>
+                <select id="fSource">${selectOptions(SOURCES, f.source, "All Sources")}</select>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-group">
+                <label class="toggle-line">
+                    <input id="leadDateToggle" type="checkbox" ${f.leadDate ? "checked" : ""}>
+                    Filter by Lead Date
+                </label>
+                <div class="filter-fields">
+                    <div class="field">
+                        <label>QUICK RANGE</label>
+                        <select id="leadDateQuick">${quickOptions(pastOptions, f.leadDateQuick)}</select>
+                    </div>
+                    <div class="field">
+                        <label>FROM DATE</label>
+                        <input id="dateFrom" type="date" value="${f.dateFrom}">
+                    </div>
+                    <div class="field">
+                        <label>TO DATE</label>
+                        <input id="dateTo" type="date" value="${f.dateTo}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="toggle-line">
+                    <input id="followToggle" type="checkbox" ${f.followUp ? "checked" : ""}>
+                    Filter by Last Follow-up
+                </label>
+                <div class="filter-fields">
+                    <div class="field">
+                        <label>QUICK RANGE</label>
+                        <select id="followQuick">${quickOptions(pastOptions, f.followQuick)}</select>
+                    </div>
+                    <div class="field">
+                        <label>LAST FOLLOW-UP FROM DATE</label>
+                        <input id="followFrom" type="date" value="${f.followUpFrom}">
+                    </div>
+                    <div class="field">
+                        <label>FOLLOW-UP COUNT</label>
+                        <select id="followCount">
+                            <option ${f.followUpCount === "All Follow-up Counts" ? "selected" : ""}>All Follow-up Counts</option>
+                            ${FOLLOW_UP_OPTIONS.map(x =>
+                                `<option ${x === f.followUpCount ? "selected" : ""}>${esc(x)}</option>`
+                            ).join("")}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="toggle-line">
+                    <input id="stayToggle" type="checkbox" ${f.stayDate ? "checked" : ""}>
+                    Filter by Stay Date
+                </label>
+                <div class="filter-fields">
+                    <div class="field">
+                        <label>QUICK RANGE</label>
+                        <select id="stayQuick">${quickOptions(futureOptions, f.stayQuick)}</select>
+                    </div>
+                    <div class="field">
+                        <label>CHECK-IN DATE</label>
+                        <input id="checkInFilter" type="date" value="${f.checkIn}">
+                    </div>
+                    <div class="field">
+                        <label>CHECK-OUT DATE</label>
+                        <input id="checkOutFilter" type="date" value="${f.checkOut}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
+
 function boardHTML(df){const selected=state.selectedStatus;let rows=df.filter(r=>val(r.Status)===selected).sort((a,b)=>(+b._sheet_row)-(+a._sheet_row));return `<div class="section-heading">Lead Conversion Board</div><div class="status-nav">${BOARD_STATUS_ORDER.map(s=>`<button class="status-btn ${s===selected?'active':''}" data-status="${escapeAttr(s)}">${STATUS_ICONS[s]||'•'} ${esc(s)} • ${df.filter(r=>val(r.Status)===s).length}</button>`).join('')}</div><div class="selected-status-header"><div><span class="selected-status-icon">${STATUS_ICONS[selected]||'•'}</span><span class="selected-status-title">${esc(selected)}</span></div><span class="selected-count">${rows.length} Leads</span></div>${rows.length?`<div class="lead-table-header"><div>CLIENT</div><div>PHONE</div><div>STAY DATES</div><div>AGENT / SOURCE</div><div>FOLLOW-UP</div><div>ACTIONS</div></div>${rows.map(leadCard).join('')}`:`<div class="empty-board"><div class="empty-icon">📭</div><div class="empty-title">No leads in this stage</div><div class="empty-text">Leads assigned to this pipeline stage will appear here.</div></div>`}`}
 function leadCard(r){const row=Number(r._sheet_row),status=val(r.Status),follow=status==='Follow up';return `<div class="lead-row"><div><div class="lead-name">${esc(val(r.Name)||'Unnamed Lead')}</div><div class="lead-date">📅 ${esc(displayDate(r.Date))}</div>${val(r.Email)?`<div class="lead-email">✉️ ${esc(r.Email)}</div>`:''}${status==='Converted'?`<div style="font-weight:800;margin-top:5px">₹ ${amount(r['Total Amount']).toFixed(2)}</div>`:''}</div><div>${r.Number?`<div class="phone-line">📞 ${esc(r.Number)} <button class="copy-btn" data-copy="${escapeAttr(r.Number)}">📋 Copy</button></div>`:'<span class="lead-date">No phone</span>'}</div><div>${r['Check In Date']?`<div class="field-label">STAY</div><div class="field-value">📅 ${esc(displayDate(r['Check In Date']))}</div>${r['Check Out Date']?`<div class="field-value">→ ${esc(displayDate(r['Check Out Date']))}</div>`:''}`:'<div class="field-label">No stay dates</div>'}${r['Booking Confirmation Date']?`<div class="booking-date">✓ Booked ${esc(displayDate(r['Booking Confirmation Date']))}</div>`:''}</div><div><div class="field-label">AGENT</div><div class="agent-name">👤 ${esc(r.Agent)}</div><div class="source-name">🔗 ${esc(r.Source)}</div></div><div>${r['Follow Up Count']?`<div class="followup-badge">🔔 ${esc(r['Follow Up Count'])}</div>`:''}${r['Last Follow Up']?`<div class="field-label">LAST FOLLOW-UP</div><div class="field-value">${esc(displayDate(r['Last Follow Up']))}</div>`:''}${r.Remarks?`<div class="remarks">${esc(String(r.Remarks).length>70?String(r.Remarks).slice(0,70)+'...':r.Remarks)}</div>`:''}</div><div class="actions"><button class="btn" data-edit="${row}">✏️ Edit</button><button class="btn" data-delete="${row}">🗑️ Delete</button><select data-status-row="${row}" data-original-status="${escapeAttr(status)}" data-original-follow="${escapeAttr(val(r['Follow Up Count']))}" data-original-date="${escapeAttr(inputDate(r['Last Follow Up']))}">${STATUSES.map(s=>`<option value="${escapeAttr(s)}" ${s===status?'selected':''}>${esc(s)}</option>`).join('')}</select><div class="status-controls" data-status-controls="${row}" style="display:${follow?'block':'none'}"><div class="follow-box"><div class="field"><label>LAST FOLLOW-UP DONE ON</label><input data-follow-date="${row}" type="date" value="${inputDate(r['Last Follow Up'])}"></div><div class="field"><label>FOLLOW-UP COUNT</label><select data-follow-count="${row}"><option value="">Follow-up Count</option>${FOLLOW_UP_OPTIONS.slice(0,8).map(x=>`<option value="${escapeAttr(x)}" ${x===val(r['Follow Up Count'])?'selected':''}>${esc(x)}</option>`).join('')}</select></div></div></div><button class="btn btn-primary status-update-btn" data-save-status="${row}" style="display:none">✓ Update</button></div></div>`}
 
@@ -87,7 +277,287 @@ function render(){const root=document.getElementById('app');if(state.loading){ro
 function updateStatusControls(row){const select=document.querySelector(`[data-status-row="${row}"]`);const controls=document.querySelector(`[data-status-controls="${row}"]`);if(!select||!controls)return;const status=select.value;const originalFollow=select.dataset.originalFollow||'';const originalDate=select.dataset.originalDate||'';const currentDate=controls.querySelector(`[data-follow-date="${row}"]`)?.value||'';const currentCount=controls.querySelector(`[data-follow-count="${row}"]`)?.value||'';if(status==='Follow up'){controls.innerHTML=`<div class="follow-box"><div class="field"><label>LAST FOLLOW-UP DONE ON</label><input data-follow-date="${row}" type="date" value="${escapeAttr(currentDate||originalDate)}"></div><div class="field"><label>FOLLOW-UP COUNT</label><select data-follow-count="${row}"><option value="">Follow-up Count</option>${FOLLOW_UP_OPTIONS.slice(0,8).map(x=>`<option value="${escapeAttr(x)}" ${x===(currentCount||originalFollow)?'selected':''}>${x}</option>`).join('')}</select></div></div><button class="btn btn-primary status-update-btn" data-save-status="${row}">✓ Update</button>`;}else{controls.innerHTML=`<button class="btn btn-primary status-update-btn" data-save-status="${row}" style="display:none">✓ Update</button>`;}const btn=controls.querySelector(`[data-save-status="${row}"]`);if(btn)btn.onclick=()=>saveStatus(row);controls.querySelector(`[data-follow-date="${row}"]`)?.addEventListener('change',()=>checkStatusChanged(row));controls.querySelector(`[data-follow-count="${row}"]`)?.addEventListener('change',()=>checkStatusChanged(row));checkStatusChanged(row);}
 function checkStatusChanged(row){const select=document.querySelector(`[data-status-row="${row}"]`);const controls=document.querySelector(`[data-status-controls="${row}"]`);if(!select||!controls)return;const selectedStatus=select.value;const originalStatus=select.dataset.originalStatus||'';const originalFollow=select.dataset.originalFollow||'';const originalDate=select.dataset.originalDate||'';const currentDate=controls.querySelector(`[data-follow-date="${row}"]`)?.value||'';const currentCount=controls.querySelector(`[data-follow-count="${row}"]`)?.value||'';let changed=selectedStatus!==originalStatus;if(selectedStatus==='Follow up'&&(currentDate!==originalDate||currentCount!==originalFollow))changed=true;const btn=controls.querySelector(`[data-save-status="${row}"]`);if(btn)btn.style.display=changed?'block':'none';}
 
-function bind(){document.getElementById('addBtn')?.addEventListener('click',()=>openAdd());document.getElementById('bulkBtn')?.addEventListener('click',()=>openBulk());document.getElementById('refreshBtn')?.addEventListener('click',load);document.querySelectorAll('[data-tab]').forEach(x=>x.onclick=()=>{state.tab=x.dataset.tab;render()});document.querySelectorAll('[data-status]').forEach(x=>x.onclick=()=>{state.selectedStatus=x.dataset.status;render()});document.getElementById('fSearch')?.addEventListener('input',e=>{state.filters.search=e.target.value;renderDebounced()});['fStatus','fAgent','fSource'].forEach(id=>document.getElementById(id)?.addEventListener('change',e=>{const map={fStatus:'status',fAgent:'agent',fSource:'source'};state.filters[map[id]]=e.target.value;render()}));document.getElementById('leadDateToggle')?.addEventListener('change',e=>{state.filters.leadDate=e.target.checked;render()});document.getElementById('followToggle')?.addEventListener('change',e=>{state.filters.followUp=e.target.checked;render()});document.getElementById('stayToggle')?.addEventListener('change',e=>{state.filters.stayDate=e.target.checked;render()});[['dateFrom','dateFrom'],['dateTo','dateTo'],['followFrom','followUpFrom'],['followCount','followUpCount'],['checkInFilter','checkIn'],['checkOutFilter','checkOut']].forEach(([id,k])=>document.getElementById(id)?.addEventListener('change',e=>{state.filters[k]=e.target.value;render()}));document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);const old=b.textContent;b.textContent='✓ Copied';setTimeout(()=>b.textContent=old,1200)}catch{}});document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>openEdit(+b.dataset.edit));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>openDelete(+b.dataset.delete));document.querySelectorAll('[data-status-row]').forEach(s=>{const row=+s.dataset.statusRow;const card=s.closest('.lead-row');const controls=card.querySelector(`[data-status-controls="${row}"]`);const btn=card.querySelector(`[data-save-status="${row}"]`);const dateInput=card.querySelector(`[data-follow-date="${row}"]`);const countInput=card.querySelector(`[data-follow-count="${row}"]`);const check=()=>{const st=s.value;const fd=dateInput?.value||'';const fc=countInput?.value||'';const isFollow=st==='Follow up';if(controls)controls.style.display=isFollow?'block':'none';const changed=st!==s.dataset.originalStatus||(isFollow&&(fd!==s.dataset.originalDate||fc!==s.dataset.originalFollow));if(btn)btn.style.display=changed?'block':'none'};s.addEventListener('change',check);dateInput?.addEventListener('change',check);countInput?.addEventListener('change',check);check()});document.querySelectorAll('[data-save-status]').forEach(b=>b.onclick=()=>saveStatus(+b.dataset.saveStatus));}
+
+function bind() {
+    // Add Lead, Bulk Add and Refresh
+    document.getElementById('addBtn')
+        ?.addEventListener('click', () => openAdd());
+
+    document.getElementById('bulkBtn')
+        ?.addEventListener('click', () => openBulk());
+
+    document.getElementById('refreshBtn')
+        ?.addEventListener('click', load);
+
+    // Navigation tabs
+    document.querySelectorAll('[data-tab]').forEach(x => {
+        x.onclick = () => {
+            state.tab = x.dataset.tab;
+            render();
+        };
+    });
+
+    // Status summary filters
+    document.querySelectorAll('[data-status]').forEach(x => {
+        x.onclick = () => {
+            state.selectedStatus = x.dataset.status;
+            render();
+        };
+    });
+
+    // Search
+    document.getElementById('fSearch')
+        ?.addEventListener('input', e => {
+            state.filters.search = e.target.value;
+            renderDebounced();
+        });
+
+    // Status, agent and source filters
+    ['fStatus', 'fAgent', 'fSource'].forEach(id => {
+        document.getElementById(id)?.addEventListener('change', e => {
+            const map = {
+                fStatus: 'status',
+                fAgent: 'agent',
+                fSource: 'source'
+            };
+
+            state.filters[map[id]] = e.target.value;
+            render();
+        });
+    });
+
+    // Enable/disable date filters
+    document.getElementById('leadDateToggle')
+        ?.addEventListener('change', e => {
+            state.filters.leadDate = e.target.checked;
+            render();
+        });
+
+    document.getElementById('followToggle')
+        ?.addEventListener('change', e => {
+            state.filters.followUp = e.target.checked;
+            render();
+        });
+
+    document.getElementById('stayToggle')
+        ?.addEventListener('change', e => {
+            state.filters.stayDate = e.target.checked;
+            render();
+        });
+
+    // Calculate quick date ranges
+    function getRangeStart(option, today) {
+        const d = new Date(today + 'T00:00:00');
+
+        if (option === '7') {
+            d.setDate(d.getDate() - 6);
+        } else if (option === '30') {
+            d.setDate(d.getDate() - 29);
+        } else if (option === '3m') {
+            d.setMonth(d.getMonth() - 3);
+        } else {
+            return '';
+        }
+
+        return [
+            d.getFullYear(),
+            String(d.getMonth() + 1).padStart(2, '0'),
+            String(d.getDate()).padStart(2, '0')
+        ].join('-');
+    }
+
+    function getRangeEnd(option, today) {
+        const d = new Date(today + 'T00:00:00');
+
+        if (option === '7') {
+            d.setDate(d.getDate() + 6);
+        } else if (option === '30') {
+            d.setDate(d.getDate() + 29);
+        } else if (option === '3m') {
+            d.setMonth(d.getMonth() + 3);
+        } else {
+            return '';
+        }
+
+        return [
+            d.getFullYear(),
+            String(d.getMonth() + 1).padStart(2, '0'),
+            String(d.getDate()).padStart(2, '0')
+        ].join('-');
+    }
+
+
+    // Lead Date quick ranges
+    document.getElementById('leadDateQuick')
+        ?.addEventListener('change', e => {
+            const option = e.target.value;
+            const today = todayIso();
+
+            state.filters.leadDateQuick = option;
+
+            if (option !== 'custom') {
+                state.filters.dateFrom =
+                    getRangeStart(option, today);
+
+                state.filters.dateTo = today;
+            }
+
+            render();
+        });
+
+    // Follow-up quick ranges
+    document.getElementById('followQuick')
+        ?.addEventListener('change', e => {
+            const option = e.target.value;
+            const today = todayIso();
+
+            state.filters.followQuick = option;
+
+            if (option !== 'custom') {
+                state.filters.followUpFrom =
+                    getRangeStart(option, today);
+            }
+
+            render();
+        });
+
+    // Stay Date quick ranges
+    document.getElementById('stayQuick')
+        ?.addEventListener('change', e => {
+            const option = e.target.value;
+            const today = todayIso();
+
+            state.filters.stayQuick = option;
+
+            if (option !== 'custom') {
+                state.filters.checkIn = today;
+                state.filters.checkOut =
+                    getRangeEnd(option, today);
+            }
+
+            render();
+        });
+
+    // Date inputs and follow-up count
+    [
+        ['dateFrom', 'dateFrom', 'leadDateQuick', 'leadDateQuick'],
+        ['dateTo', 'dateTo', 'leadDateQuick', 'leadDateQuick'],
+        ['followFrom', 'followUpFrom', 'followQuick', 'followQuick'],
+        ['followCount', 'followUpCount', null, null],
+        ['checkInFilter', 'checkIn', 'stayQuick', 'stayQuick'],
+        ['checkOutFilter', 'checkOut', 'stayQuick', 'stayQuick']
+    ].forEach(([id, key, quickId, quickStateKey]) => {
+        document.getElementById(id)?.addEventListener(
+            'change',
+            e => {
+                state.filters[key] = e.target.value;
+
+                // Manual date selection resets the preset.
+                if (quickId) {
+                    const quick =
+                        document.getElementById(quickId);
+
+                    if (quick) {
+                        quick.value = 'custom';
+                    }
+
+                    state.filters[quickStateKey] = 'custom';
+                }
+
+                render();
+            }
+        );
+    });
+
+    // Copy quotation or lead details
+    document.querySelectorAll('[data-copy]').forEach(b => {
+        b.onclick = async () => {
+            try {
+                await navigator.clipboard.writeText(b.dataset.copy);
+
+                const old = b.textContent;
+                b.textContent = '✓ Copied';
+
+                setTimeout(() => {
+                    b.textContent = old;
+                }, 1200);
+            } catch {
+                // Clipboard unavailable or permission denied.
+            }
+        };
+    });
+
+    // Edit and Delete
+    document.querySelectorAll('[data-edit]').forEach(b => {
+        b.onclick = () => openEdit(+b.dataset.edit);
+    });
+
+    document.querySelectorAll('[data-delete]').forEach(b => {
+        b.onclick = () => openDelete(+b.dataset.delete);
+    });
+
+    // Inline status and follow-up editing
+    document.querySelectorAll('[data-status-row]').forEach(s => {
+        const row = +s.dataset.statusRow;
+        const card = s.closest('.lead-row');
+
+        const controls = card.querySelector(
+            `[data-status-controls="${row}"]`
+        );
+
+        const btn = card.querySelector(
+            `[data-save-status="${row}"]`
+        );
+
+        const dateInput = card.querySelector(
+            `[data-follow-date="${row}"]`
+        );
+
+        const countInput = card.querySelector(
+            `[data-follow-count="${row}"]`
+        );
+
+        const check = () => {
+            const st = s.value;
+            const fd = dateInput?.value || '';
+            const fc = countInput?.value || '';
+
+            const isFollow = st === 'Follow up';
+
+            if (controls) {
+                controls.style.display =
+                    isFollow ? 'block' : 'none';
+            }
+
+            const changed =
+                st !== s.dataset.originalStatus ||
+                (
+                    isFollow &&
+                    (
+                        fd !== s.dataset.originalDate ||
+                        fc !== s.dataset.originalFollow
+                    )
+                );
+
+            if (btn) {
+                btn.style.display =
+                    changed ? 'block' : 'none';
+            }
+        };
+
+        s.addEventListener('change', check);
+        dateInput?.addEventListener('change', check);
+        countInput?.addEventListener('change', check);
+
+        check();
+    });
+
+    // Save inline status changes
+    document.querySelectorAll('[data-save-status]').forEach(b => {
+        b.onclick = () => saveStatus(+b.dataset.saveStatus);
+    });
+}
+
 
 let renderTimer;function renderDebounced(){clearTimeout(renderTimer);renderTimer=setTimeout(render,250)}
 async function saveStatus(row){const card=document.querySelector(`[data-save-status="${row}"]`).closest('.lead-row');const status=card.querySelector(`[data-status-row="${row}"]`).value;const updates={Status:status};if(status==='Follow up'){updates['Follow Up Count']=card.querySelector(`[data-follow-count="${row}"]`)?.value||'';updates['Last Follow Up']=card.querySelector(`[data-follow-date="${row}"]`)?.value?displayDate(card.querySelector(`[data-follow-date="${row}"]`).value):''}else{updates['Follow Up Count']='';updates['Last Follow Up']=''}try{await api(`/api/leads/${row}`,{method:'PUT',body:JSON.stringify(updates)});await load();showToast('Lead updated successfully.','success')}catch(e){showToast(e.message,'error')}}
