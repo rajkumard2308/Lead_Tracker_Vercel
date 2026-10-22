@@ -12,6 +12,110 @@
 @media(max-width:1100px){.dashboard{grid-template-columns:repeat(3,1fr)}.status-nav{grid-template-columns:repeat(4,1fr)}.lead-table-header,.lead-row{grid-template-columns:1.3fr 1.3fr 1.4fr 1.3fr 1.5fr 1.8fr}.filter-grid{grid-template-columns:1fr 1fr}.form-grid.three{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){.main{padding:1.2rem 12px 2rem}.top-header{grid-template-columns:1fr 1fr}.top-header>div:first-child{grid-column:1/-1}.main-title{font-size:26px}.filter-grid,.filter-row,.form-grid,.form-grid.three{grid-template-columns:1fr}.filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-fields>.field:has(select[id$="Quick"]){grid-column:1/-1}.dashboard{grid-template-columns:repeat(2,1fr)}.status-nav{grid-template-columns:repeat(2,1fr)}.lead-table-header{display:none}.lead-row{display:block}.lead-row>div{margin-bottom:12px}.actions{display:grid;grid-template-columns:1fr 1fr}.actions select,.follow-box{grid-column:1/-1}.insight-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.dashboard{grid-template-columns:1fr}.top-header{grid-template-columns:1fr}.top-header>div:first-child{grid-column:auto}.status-nav{grid-template-columns:1fr}.modal{padding:14px}.modal-actions{flex-direction:column}}
+
+/* Multi-select dropdown: layout and positioning */
+.filter-grid > .field {
+    min-width: 0;
+}
+
+.filter-grid .multi-select {
+    position: relative;
+    width: 100%;
+}
+
+.filter-grid .multi-select .multi-select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.filter-grid .multi-select .multi-select-btn:hover {
+    border-color: #818cf8;
+}
+
+.filter-grid .multi-select .multi-select-options {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 5px 0;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+    z-index: 1000;
+}
+
+.filter-grid .multi-select.open .multi-select-options {
+    display: block !important;
+}
+
+/* Keep each checkbox and its text on the same line */
+.filter-grid .multi-select .multi-option {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 9px 12px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.filter-grid .multi-select .multi-option:hover {
+    background: #f1f5f9;
+}
+
+.filter-grid .multi-select .multi-option input[type="checkbox"] {
+    display: inline-block;
+    flex: 0 0 16px;
+    width: 16px !important;
+    min-width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    accent-color: #4f46e5;
+    box-shadow: none;
+}
+
+.filter-grid .multi-select .multi-option span {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.filter-grid .multi-select .multi-select-clear {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #4f46e5;
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter-grid .multi-select .multi-select-clear:hover {
+    background: #eef2ff;
+}
 </style>
 </head>
 <body>
@@ -46,7 +150,7 @@ const BOARD_STATUS_ORDER=["Quotation Given","Follow up","Converted","No Availabi
 const STATUS_ICONS={"Follow up":"🟡","Quotation Given":"🔵","Converted":"🟢","No Availability":"⚪","Out of Budget":"🔴","Ghosted":"🟣","Not Interested":"⚫"};
 const STATUS_COLORS={"Follow up":"#F59E0B","Quotation Given":"#3B82F6","Converted":"#22C55E","No Availability":"#06B6D4","Out of Budget":"#EF4444","Ghosted":"#A855F7","Not Interested":"#64748B"};
 const CHART_BG="#0E1117",TEXT_COLOR="#F8FAFC",MUTED_TEXT="#CBD5E1",GRID_COLOR="#29313D";
-const state={leads:[],loading:true,error:"",tab:"board",selectedStatus:"Quotation Given",filters:{search:"",status:"All Statuses",agent:"All Agents",source:"All Sources",leadDate:false,dateFrom:"",dateTo:"",followUp:false,followUpFrom:"",followUpCount:"All Follow-up Counts",leadDateQuick: "custom",followQuick: "custom",stayQuick: "custom",stayDate:false,checkIn:"",checkOut:""},modal:null,editing:null,deleting:null,bulk:null};
+const state={leads:[],loading:true,error:"",tab:"board",selectedStatus:"Quotation Given",filters:{search:"",status:[],agent:[],source:[],leadDate:false,dateFrom:"",dateTo:"",followUp:false,followUpFrom:"",followUpCount:"All Follow-up Counts",leadDateQuick: "custom",followQuick: "custom",stayQuick: "custom",stayDate:false,checkIn:"",checkOut:""},modal:null,editing:null,deleting:null,bulk:null};
 
 function esc(v){return String(v??"").replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 function parseDate(v){if(!v)return null; const s=String(v).trim(); if(!s)return null; let m=s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})$/); if(m){let d=+m[1],mo=+m[2],y=+m[3];if(y<100)y+=2000; if(d>0&&mo>0)return new Date(y,mo-1,d)} m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);if(m)return new Date(+m[1],+m[2]-1,+m[3]); return null;}
@@ -78,17 +182,22 @@ function filtered() {
     );
   }
 
-  if (f.status !== "All Statuses")
-    a = a.filter(r => val(r.Status) === f.status);
 
-  if (f.agent !== "All Agents")
-    a = a.filter(r => val(r.Agent) === f.agent);
+  if (f.status.length > 0) {
+      a = a.filter(r => f.status.includes(val(r.Status)));
+  }
 
-  if (f.source !== "All Sources")
-    a = a.filter(r => val(r.Source) === f.source);
+  if (f.agent.length > 0) {
+      a = a.filter(r => f.agent.includes(val(r.Agent)));
+  }
 
-  if (f.leadDate) {
-    if (f.dateFrom && f.dateTo && f.dateFrom > f.dateTo) return [];
+  if (f.source.length > 0) {
+      a = a.filter(r => f.source.includes(val(r.Source)));
+  }
+
+
+    if (f.leadDate) {
+      if (f.dateFrom && f.dateTo && f.dateFrom > f.dateTo) return [];
 
     a = a.filter(r => {
       const d = isoDate(r.Date);
@@ -154,6 +263,46 @@ function filtered() {
 function dashboardHTML(df){const c=Object.fromEntries(STATUSES.map(s=>[s,df.filter(r=>val(r.Status)===s).length]));const total=df.length,converted=c.Converted||0;const rev=df.filter(r=>val(r.Status)==='Converted').reduce((s,r)=>s+amount(r['Total Amount']),0);return `<div class="dashboard"><div class="metric"><div class="metric-label">TOTAL LEADS</div><div class="metric-value">${total}</div></div><div class="metric"><div class="metric-label">QUOTATION GIVEN</div><div class="metric-value">${c['Quotation Given']}</div></div><div class="metric"><div class="metric-label">FOLLOW UP</div><div class="metric-value">${c['Follow up']}</div></div><div class="metric"><div class="metric-label">CONVERTED</div><div class="metric-value">${converted}</div></div><div class="metric"><div class="metric-label">NO AVAILABILITY</div><div class="metric-value">${c['No Availability']}</div></div></div><div class="dashboard"><div class="metric"><div class="metric-label">OUT OF BUDGET</div><div class="metric-value">${c['Out of Budget']}</div></div><div class="metric"><div class="metric-label">GHOSTED</div><div class="metric-value">${c.Ghosted}</div></div><div class="metric"><div class="metric-label">NOT INTERESTED</div><div class="metric-value">${c['Not Interested']}</div></div><div class="metric"><div class="metric-label">TOTAL REVENUE</div><div class="metric-value">${revenue(rev)}</div></div><div class="metric"><div class="metric-label">CONVERSION</div><div class="metric-value">${total?(converted/total*100).toFixed(1):'0.0'}%</div></div></div>`}
 function selectOptions(arr,selected,all){return (all?[all]:[]).concat(arr).map(x=>`<option ${x===selected?'selected':''}>${esc(x)}</option>`).join('')}
 
+function multiSelectHTML(key, options, placeholder) {
+    const selected = state.filters[key] || [];
+    const idMap = {
+        status: "fStatus",
+        agent: "fAgent",
+        source: "fSource"
+    };
+
+    const label = selected.length
+        ? selected.join(", ")
+        : placeholder;
+
+    return `
+        <div class="multi-select" id="${idMap[key]}">
+            <button type="button"
+                    class="multi-select-btn"
+                    aria-expanded="false">
+                <span>${esc(label)}</span>
+                <span>▾</span>
+            </button>
+
+            <div class="multi-select-options">
+                ${options.map(option => `
+                    <label class="multi-option">
+                        <input type="checkbox"
+                               value="${escapeAttr(option)}"
+                               ${selected.includes(option) ? "checked" : ""}>
+                        <span>${esc(option)}</span>
+                    </label>
+                `).join("")}
+
+                <button type="button"
+                        class="multi-select-clear">
+                    Clear selection
+                </button>
+            </div>
+        </div>
+    `;
+}
+
 
 function filtersHTML() {
     const f = state.filters;
@@ -188,18 +337,22 @@ function filtersHTML() {
                 <input id="fSearch" value="${escapeAttr(f.search)}"
                        placeholder="Search name, phone, email...">
             </div>
+
             <div class="field">
                 <label>STATUS</label>
-                <select id="fStatus">${selectOptions(STATUSES, f.status, "All Statuses")}</select>
+                ${multiSelectHTML("status", STATUSES, "All Statuses")}
             </div>
+
             <div class="field">
                 <label>AGENT</label>
-                <select id="fAgent">${selectOptions(AGENTS, f.agent, "All Agents")}</select>
+                ${multiSelectHTML("agent", AGENTS, "All Agents")}
             </div>
+
             <div class="field">
                 <label>SOURCE</label>
-                <select id="fSource">${selectOptions(SOURCES, f.source, "All Sources")}</select>
+                ${multiSelectHTML("source", SOURCES, "All Sources")}
             </div>
+
         </div>
 
         <div class="filter-row">
@@ -329,18 +482,64 @@ function bind() {
         });
 
     // Status, agent and source filters
-    ['fStatus', 'fAgent', 'fSource'].forEach(id => {
-        document.getElementById(id)?.addEventListener('change', e => {
-            const map = {
-                fStatus: 'status',
-                fAgent: 'agent',
-                fSource: 'source'
-            };
 
-            state.filters[map[id]] = e.target.value;
-            render();
+    const filterMap = {
+        fStatus: "status",
+        fAgent: "agent",
+        fSource: "source"
+    };
+
+    Object.entries(filterMap).forEach(([id, key]) => {
+        const dropdown = document.getElementById(id);
+        if (!dropdown) return;
+
+        const button = dropdown.querySelector(".multi-select-btn");
+
+        button.addEventListener("click", () => {
+            const isOpen = dropdown.classList.toggle("open");
+            button.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        dropdown.querySelectorAll('input[type="checkbox"]')
+            .forEach(checkbox => {
+                checkbox.addEventListener("change", () => {
+                    state.filters[key] = Array.from(
+                        dropdown.querySelectorAll(
+                            'input[type="checkbox"]:checked'
+                        ),
+                        input => input.value
+                    );
+
+                    render();
+
+                    // Keep the dropdown open for further selections.
+                    const updated = document.getElementById(id);
+                    if (updated) {
+                        updated.classList.add("open");
+                        updated.querySelector(".multi-select-btn")
+                            ?.setAttribute("aria-expanded", "true");
+                    }
+                });
+            });
+
+        dropdown.querySelector(".multi-select-clear")
+            .addEventListener("click", () => {
+                state.filters[key] = [];
+                render();
+            });
+    });
+
+    // Close dropdowns when clicking outside.
+    document.addEventListener("click", event => {
+        document.querySelectorAll(".multi-select.open").forEach(dropdown => {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("open");
+                dropdown.querySelector(".multi-select-btn")
+                    ?.setAttribute("aria-expanded", "false");
+            }
         });
     });
+
 
     // Enable/disable date filters
     document.getElementById('leadDateToggle')
