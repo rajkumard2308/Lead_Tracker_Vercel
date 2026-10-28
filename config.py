@@ -18,6 +18,8 @@ AGENTS = ["Shweta", "Mayank", "Punya"]
 SOURCES = [
     "Whatsapp Campaign",
     "Whatsapp business",
+    "Offline TA",
+    "Gmail",
     "Broad Match Campaign",
     "Villa Campaign",
     "Google Campaign",
